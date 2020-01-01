@@ -8,6 +8,7 @@
 <h3>Задача 1:</h3>
 <p>Создать форму-калькулятор c операциями: сложение, вычитание, умножение, деление. Не забыть
     обработать деление на ноль!:</p>
+
 <?php
     require_once '../config/config.php';
     if (count($_POST)) {
@@ -38,7 +39,7 @@
 
 <form method="post">
     <input type="number" step="any" name="a" value="<?php if (isset($a)) echo $a; ?>">
-    <select name="mathOperation" id="mathOperation">
+    <select name="mathOperation">
         <?php
             // Отобразим операции калькулятора
             foreach (MATH_OPERATION as $key => $mathVal) {
