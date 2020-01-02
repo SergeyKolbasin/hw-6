@@ -8,7 +8,7 @@
         $result = $a + $b;
         return $result;
     }
-    // Функция разности
+    // Функция вычитания
     function fMathSub ($a = 0, $b = 0) {
         $result = $a - $b;
         return $result;
@@ -19,7 +19,7 @@
         return $result;
     }
     // Функция деления
-    function fMathDiv ($a = 0, $b = 0) {
+    function fMathDiv ($a = 0, $b = 1) {
         if ($b == 0) {
             $result = 'на 0 делить нельзя!';
         } else {
@@ -40,7 +40,7 @@
                     return fMathAdd($argA, $argB);
                 }
                 break;
-            case '-':                                   // Разность
+            case '-':                                   // Вычитание
                 if (isset($argA) AND isset($argB)) {
                     return fMathSub($argA, $argB);
                 }

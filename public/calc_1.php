@@ -30,20 +30,22 @@
             $mathOperation = MATH_OPERATION[0];     // По умолчанию - сложение
         }
     }
-    
     // Вызов функции математических операций
     if(isset($a) && isset($b)) {
         $result = fMathOperation($a, $b, $mathOperation);
     }
 ?>
 
+<!-- Форма калькулятора -->
 <form method="post">
+    <!-- Ввод аргумента A -->
     <input type="number" step="any" name="a" value="<?php if (isset($a)) echo $a; ?>">
+    <!-- Выбор математической операции калькулятора -->
     <select name="mathOperation">
         <?php
-            // Отобразим операции калькулятора
+            // Отображение операций калькулятора
             foreach (MATH_OPERATION as $key => $mathVal) {
-                    // Определим последнюю математическую операцию
+                    // Определение последней математической операции
                     if ($mathOperation == $mathVal) {
                         echo "<option selected value=$key>$mathVal</option>";
                     } else {
@@ -52,9 +54,10 @@
                 }
         ?>
     </select>
+    <!-- Ввод аргумента B -->
     <input type="number" step="any" name="b" value="<?php if (isset($b)) echo $b; ?>">
     <input type="submit" value="=">
-    <!--Вывод результата в отдельное поле-->
+    <!-- Вывод результата -->
     <input type="text" name="result" value="<?php if (isset($result)) echo $result; ?>" readonly>
 </form>
 </body>
