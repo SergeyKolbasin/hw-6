@@ -5,27 +5,23 @@
     require_once '../config/config.php';
     // Функция сложения
     function fMathAdd($a = 0, $b = 0) {
-        $result = $a + $b;
-        return $result;
+        return $a + $b;
     }
     // Функция вычитания
     function fMathSub ($a = 0, $b = 0) {
-        $result = $a - $b;
-        return $result;
+        return $a - $b;
     }
     // Функция умножения
     function fMathMul ($a = 0, $b = 0) {
-        $result = $a * $b;
-        return $result;
+        return $a * $b;
     }
     // Функция деления
     function fMathDiv ($a = 0, $b = 1) {
         if ($b == 0) {
-            $result = 'На 0 делить нельзя!';
+            return 'На 0 делить нельзя!';
         } else {
-            $result = $a / $b;
+            return $a / $b;
         }
-        return $result;
     }
     // Функция вызова математических операций
     function fMathOperation(
@@ -36,26 +32,26 @@
     {
         switch ($mathOperation) {
             case '+':                                   // Сложение
-                if (isset($argA) AND isset($argB)) {
+                if (isset($argA) && isset($argB)) {
                     return fMathAdd($argA, $argB);
                 }
                 break;
             case '-':                                   // Вычитание
-                if (isset($argA) AND isset($argB)) {
+                if (isset($argA) && isset($argB)) {
                     return fMathSub($argA, $argB);
                 }
                 break;
             case '*':                                   // Умножение
-                if (isset($argA) AND isset($argB)) {
+                if (isset($argA) && isset($argB)) {
                     return fMathMul($argA, $argB);
                 }
                 break;
             case '/':                                   // Деление
-                if (isset($argA) AND isset($argB)) {
+                if (isset($argA) && isset($argB)) {
                     return fMathDiv($argA, $argB);
                 }
                 break;
-            default:
+            default:                                    // Если по какой-то причине операция не определена
                 return "Неверно задана операция";
         }
     }
