@@ -21,7 +21,7 @@
     // Функция деления
     function fMathDiv ($a = 0, $b = 1) {
         if ($b == 0) {
-            $result = 'на 0 делить нельзя!';
+            $result = 'На 0 делить нельзя!';
         } else {
             $result = $a / $b;
         }

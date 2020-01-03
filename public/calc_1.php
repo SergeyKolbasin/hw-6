@@ -2,10 +2,10 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Задание №2</title>
+        <title>Задача №1</title>
     </head>
 <body>
-<h3>Задача 1:</h3>
+<h3>Задача №1:</h3>
 <p>Создать форму-калькулятор c операциями: сложение, вычитание, умножение, деление. Не забыть
     обработать деление на ноль!:</p>
 
@@ -39,7 +39,7 @@
 <!-- Форма калькулятора -->
 <form method="post">
     <!-- Ввод аргумента A -->
-    <input type="number" step="any" name="a" value="<?php if (isset($a)) echo $a; ?>">
+    <input type="number" step="any" name="a" value="<?php if (isset($a)) echo $a; ?>" required>
     <!-- Выбор математической операции калькулятора -->
     <select name="mathOperation">
         <?php
@@ -55,7 +55,7 @@
         ?>
     </select>
     <!-- Ввод аргумента B -->
-    <input type="number" step="any" name="b" value="<?php if (isset($b)) echo $b; ?>">
+    <input type="number" step="any" name="b" value="<?php if (isset($b)) echo $b; ?>" required>
     <input type="submit" value="=">
     <!-- Вывод результата -->
     <input type="text" name="result" value="<?php if (isset($result)) echo $result; ?>" readonly>
