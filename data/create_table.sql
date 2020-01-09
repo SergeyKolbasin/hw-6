@@ -10,7 +10,7 @@ CREATE TABLE gallery (
 	constraint pk_id primary key (id)               # первичнй ключ
 );
 /* Создание таблицы отзывов */
-CREATE TABLE review (
+CREATE TABLE reviews (
 	id smallint unsigned not null,		        # id отзыва, соответствует id животного, если id=0,
 	                                            # то отзыв о самом зоопарке
 	date timestamp default CURRENT_TIMESTAMP,   # дата создания отзыва
