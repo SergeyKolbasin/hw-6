@@ -7,13 +7,13 @@ CREATE TABLE gallery (
 	name varchar(255) not null,								# наименование
 	description varchar(1024),								# описание
 	views smallint,											# количество просмотров
-	constraint pk_id primary key (id)               # первичнй ключ
+	constraint pk_id primary key (id)               # первичный ключ
 );
-/* Создание таблицы отзывов */
-CREATE TABLE reviews (
-	id smallint unsigned not null,		        # id отзыва, соответствует id животного, если id=0,
-	                                            # то отзыв о самом зоопарке
-	date timestamp default CURRENT_TIMESTAMP,   # дата создания отзыва
-	author varchar(255) not null,		        # автор
-	text text not null      			        # текст отзыва
+/* Создание таблицы отзывов о зоопарке*/
+CREATE TABLE review (
+	id smallint unsigned not null auto_increment,           # id отзыва
+	date timestamp default CURRENT_TIMESTAMP,               # дата создания отзыва
+	author varchar(255) not null,                           # автор
+	text text not null,                                     # текст отзыва
+	constraint pk_id primary key (id)               # первичный ключ
 );
