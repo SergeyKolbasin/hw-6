@@ -3,19 +3,39 @@
  * Функции для работы калькуляторов
  */
     require_once '../config/config.php';
-    // Функция сложения
+    /** Функция сложения
+     *
+     * @param number $a Первое слагаемое
+     * @param number $b Второе слагаемое
+     * @return number   Результат сложения
+     */
     function fMathAdd($a = 0, $b = 0) {
         return $a + $b;
     }
-    // Функция вычитания
+    /** Функция вычитания
+     *
+     * @param number $a Уменьшаемое
+     * @param number $b Вычитаемое
+     * @return number   Разность
+     */
     function fMathSub ($a = 0, $b = 0) {
         return $a - $b;
     }
-    // Функция умножения
+    /** Функция умножения
+     *
+     * @param number $a Множимое
+     * @param number $b Множитель
+     * @return number   Произведение
+     */
     function fMathMul ($a = 0, $b = 0) {
         return $a * $b;
     }
-    // Функция деления
+    /** Функция деления
+     *
+     * @param number $a Делимое
+     * @param number $b Делитель
+     * @return number   Частное
+     */
     function fMathDiv ($a = 0, $b = 1) {
         if ($b == 0) {
             return 'На 0 делить нельзя!';
@@ -23,7 +43,13 @@
             return $a / $b;
         }
     }
-    // Функция вызова математических операций
+    /** Функция вызова математических операций
+     *
+     * @param number $argA          Аргумент A
+     * @param number $argB          Аргумент B
+     * @param string $mathOperation Математическая операция
+     * @return mixed                Результат математической операции
+    */
     function fMathOperation(
         $argA,                  // аргумент A
         $argB,                  // аргумент B
