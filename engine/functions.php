@@ -1,6 +1,11 @@
 <?php
 require_once '../config/config.php';
-// Функция вывода шаблона
+/** Функция вывода шаблона
+ *
+ * @param   string    $file         Имя и полный путь к файлу шаблона
+ * @param   array     $variables    Массив переменных, переданных в шаблон
+ * @return  html                    HTML документ
+ */
 function render($file, $variables = [])
 {
 	if (!is_file($file)) {

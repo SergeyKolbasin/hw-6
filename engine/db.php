@@ -27,7 +27,7 @@ function createConnection()
 
 /** Выполнение SQL-запроса
  * Применяется только для модификации данных
- * 
+ *
  * @param   string  $sql    SQL-запрос
  * @param   object  $db     Объект, представляющий связь с БД
  * @return  integer     Количество записей, затронутых SQL-запросом
