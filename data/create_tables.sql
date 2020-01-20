@@ -1,4 +1,5 @@
 USE gallery;
+
 /* Создание таблицы фотографий */
 CREATE TABLE gallery (
 	id smallint unsigned not null auto_increment,		    # id фотографии
@@ -9,11 +10,21 @@ CREATE TABLE gallery (
 	views smallint,											# количество просмотров
 	constraint pk_id primary key (id)               # первичный ключ
 );
+
 /* Создание таблицы отзывов о зоопарке*/
-CREATE TABLE review (
+CREATE TABLE gallery_reviews (
 	id smallint unsigned not null auto_increment,           # id отзыва
 	date timestamp default CURRENT_TIMESTAMP,               # дата создания отзыва
 	author varchar(255) not null,                           # автор
 	text text not null,                                     # текст отзыва
 	constraint pk_id primary key (id)               # первичный ключ
+);
+
+/* Создание таблицы новостей */
+CREATE TABLE news (
+    id smallint unsigned not null auto_increment,           # id новости
+    title varchar(255) not null,                            # заголовок новости
+    content text,                                           # текст новости
+    date timestamp default CURRENT_TIMESTAMP,               # дата создания
+    constraint pk_id primary key (id)               # первичный ключ
 );
