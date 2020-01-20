@@ -11,6 +11,7 @@
             <li><a href="/">Главная</a></li>
             <li><a href="/contacts.php">Контакты</a></li>
             <li><a href="/gallery.php">Галерея</a></li>
+            <li><a href="#">Новости</a></li>
         </ul>
     </header>
     <h3>{{NAME}}</h3>
