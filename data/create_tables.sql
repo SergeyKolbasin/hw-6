@@ -21,7 +21,7 @@ CREATE TABLE gallery_reviews (
 );
 
 /* Создание таблицы новостей */
-CREATE TABLE news (
+CREATE TABLE gallery_news (
     id smallint unsigned not null auto_increment,           # id новости
     title varchar(255) not null,                            # заголовок новости
     content text,                                           # текст новости
