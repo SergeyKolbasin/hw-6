@@ -8,5 +8,9 @@ $news = getNews();
 $content = renderNews($news);
 echo  render(TEMPLATES_DIR . 'news.tpl', [
     'title'     =>  'Новости',
-    'h3'        =>  'Новости'
+    'h3'        =>  'Новости',
 ]);
+
+//echo $content;
+
+echo renderNews($news);
