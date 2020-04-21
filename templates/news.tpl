@@ -14,10 +14,7 @@
 			<li><a href="/news.php">Новости</a></li>
 		</ul>
 	</header>
-	<div class="news-item">
-		<h3>{{ID}}: {{TITLE}}</h3>
-		<div>{{DATE}}</div>
-		<div>{{CONTENT}}</div>
-	</div>
+	<h1>{{TITLE}}</h1>
+	<div><i>{{CONTENT}}</i></></div>
 </body>
 </html>

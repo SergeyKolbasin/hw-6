@@ -23,7 +23,7 @@ function renderNews($news)
 {
     $newsContent = '';
     foreach($news as $newsItem) {
-        $newsContent .= render(TEMPLATES_DIR . 'news.tpl', $newsItem);
+        $newsContent .= render(TEMPLATES_DIR . 'newsItem.tpl', $newsItem);
     }
     return $newsContent;
 }
