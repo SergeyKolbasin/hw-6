@@ -27,6 +27,7 @@
     
     require_once ENGINE_DIR . 'calc_functions.php';     // Функции калькуляторов
     require_once ENGINE_DIR . 'functions.php';          // Общепользовательские функции
+    require_once ENGINE_DIR . 'db.php';                 // Функции работы с БД
     require_once ENGINE_DIR . 'gallery.php';            // Функции работы с галереей
     require_once ENGINE_DIR . 'news.php';               // Функции работы с новостями
-    require_once ENGINE_DIR . 'db.php';                 // Функции работы с БД
+    require_once ENGINE_DIR . 'reviews.php';            // Функции работы с отзывами
