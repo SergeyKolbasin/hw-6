@@ -73,3 +73,13 @@ function getSingle($sql)
     }
     return $result[0];
 }
+
+/** Преобразуем строку в безопасную для выполнения SQL-выражения
+ *
+ * @param   mysqli    $dbLink       готовое подключение к БД
+ * @param   string    $string       SQL-строка запроса, которую необходимо защитить
+ * @return  string                  Возвращает безопасную строку SQL-выражения
+ */
+function realEscape($dbLink, $string) {
+    return mysqli_real_escape_string($dbLink, (string)htmlspecialchars(strip_tags($string)));
+}

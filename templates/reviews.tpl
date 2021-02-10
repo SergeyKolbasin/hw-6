@@ -7,6 +7,7 @@
 </head>
 <body>
 <header>
+    <!-- Главное меню -->
     <ul>
         <li><a href="/">Главная</a></li>
         <li><a href="/news.php">Новости</a></li>
@@ -16,7 +17,8 @@
         <li><a href="/contacts.php">Контакты</a></li>
     </ul>
 </header>
+<!-- Отзывы -->
 <h1>{{TITLE}}</h1>
-<div><i>{{CONTENT}}</i></></div>
+<div><h3><i>{{CONTENT}}</i></h3></div>
 </body>
 </html>

@@ -21,11 +21,28 @@ function    getReviews() {
 function renderReviews($reviews)
 {
     $reviews = getReviews();
-    echo '<div class=\"reviews\">';
+    $reviewsContent = '';
+    $reviewsContent .= '<div class=\"reviews\">';
     foreach($reviews as $review) {
-        echo $review['author'] . ':' . $review['text'];
-        echo '<br>';
+        $reviewsContent .= $review['date'] . ': ' . $review['author'] . ': ' . $review['text'];
+        $reviewsContent .= '<br>';
     }
-    echo '<div>';
-    //return $reviewsContent;
+    $reviewsContent .= '<div>';
+    return $reviewsContent;
+}
+    
+/** Вставка отзыва
+ *
+ * @param   string  $author Автор отзыва
+ * @param   text    $text   Текст отзыва
+ * @return  boolean         Результат выполнения вставки отзыва
+ */
+function insertReview($author, $text) {
+    $db = createConnection();
+    // Защита введенных выражений
+    $author = realEscape($db, $author);
+    $text = realEscape($db, $text);
+    
+    $sql = "INSERT INTO `gallery_reviews`(`author`, `text`) VALUES ('$author', '$text')";
+    return execQuery($sql, $db);
 }
