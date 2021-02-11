@@ -13,6 +13,18 @@ function    getReviews() {
     return getAssocResult($sql);
 }
 
+/**
+ * Выборка одного отзывае по его id
+ * @param       integer    $id  Идентификатор отзыва
+ * @return      array           Массив, содержащий поля отзыва
+ */
+function getReview($id) {
+    $id = (int)$id;
+    $sql = "SELECT * FROM `gallery_reviews` WHERE `id`=$id";
+    return getSingle($sql);
+}
+
+
 /** Отображение отзывов на страницу
  *
  * @param   array   $reviews    Массив отзывов
@@ -46,3 +58,4 @@ function insertReview($author, $text) {
     $sql = "INSERT INTO `gallery_reviews`(`author`, `text`) VALUES ('$author', '$text')";
     return execQuery($sql, $db);
 }
+

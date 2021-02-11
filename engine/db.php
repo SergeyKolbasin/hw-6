@@ -30,7 +30,7 @@ function createConnection()
  *
  * @param   string  $sql    SQL-запрос
  * @param   object  $db     Объект, представляющий связь с БД
- * @return  integer     Количество записей, затронутых SQL-запросом
+ * @return  integer         Количество записей, затронутых SQL-запросом
  */
 function execQuery($sql, $db=null)
 {
