@@ -63,3 +63,17 @@ function insertReview($author, $text) {
     return execQuery($sql, $db);
 }
 
+/** Редактирование отзыва
+ * @param string    $id     Идентификатор отзыва
+ * @param string    $author Автор отзыва
+ * @param $text     $text   Текст отзыва
+ */
+function updateReview($id, $author, $text) {
+    $db = createConnection();
+    $id = (int)$id;
+    // Защита от тегов
+    $author = realEscape($db, $author);
+    $text = realEscape($db, $text);
+    $sql = "UPDATE `gallery_reviews` SET `author`='$author', `text`='$text' WHERE `id`=$id";
+    return execQuery($sql, $db);
+}

@@ -30,10 +30,10 @@
     // Отзывы
     echo renderReviews($reviews);
 ?>
-    <!-- Форма ввода отзыва -->
-    <h4>Добавьте ваш отзыв:</h4>
-    <form method="POST">
-        <span>Ваше имя: </span><input type="text" name="author" value="<?= $author ?>"><br><br>
-        <span>Комментарий: </span><textarea name="text"><?= $text ?></textarea><br><br>
-        <input type="submit" value="Отправить">
-    </form>
+<!-- Форма ввода отзыва -->
+<h4>Добавьте ваш отзыв:</h4>
+<form method="POST">
+    <span>Ваше имя: </span><input type="text" name="author" value="<?= $author ?>"><br><br>
+    <span>Комментарий: </span><textarea name="text"><?= $text ?></textarea><br><br>
+    <input type="submit" value="Отправить">
+</form>
