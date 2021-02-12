@@ -37,6 +37,10 @@ function renderReviews($reviews)
     $reviewsContent .= '<div class=\"reviews\">';
     foreach($reviews as $review) {
         $reviewsContent .= $review['date'] . ': ' . $review['author'] . ': ' . $review['text'];
+        // Ссылка на редактирование
+        $reviewsContent .= " <a href=\"editReview.php?id=" . $review['id'] . "\">Редактировать</a>";
+        // Ссылка на удаление
+        $reviewsContent .= " <a href=\"# . \">Удалить</a>";
         $reviewsContent .= '<br>';
     }
     $reviewsContent .= '<div>';
