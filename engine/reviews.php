@@ -40,7 +40,7 @@ function renderReviews($reviews)
         // Ссылка на редактирование
         $reviewsContent .= " <a href=\"editReview.php?id=" . $review['id'] . "\">Редактировать</a>";
         // Ссылка на удаление
-        $reviewsContent .= " <a href=\"# . \">Удалить</a>";
+        $reviewsContent .= " <a href=\"deleteReview.php?id=" . $review['id'] . "\">Удалить</a>";
         $reviewsContent .= '<br>';
     }
     $reviewsContent .= '<div>';
@@ -64,9 +64,10 @@ function insertReview($author, $text) {
 }
 
 /** Редактирование отзыва
- * @param string    $id     Идентификатор отзыва
- * @param string    $author Автор отзыва
- * @param $text     $text   Текст отзыва
+ * @param   integer     $id     Идентификатор отзыва
+ * @param   string      $author Автор отзыва
+ * @param   $text       $text   Текст отзыва
+ * @return  boolean             Результат выполнения редактирования
  */
 function updateReview($id, $author, $text) {
     $db = createConnection();
@@ -75,5 +76,16 @@ function updateReview($id, $author, $text) {
     $author = realEscape($db, $author);
     $text = realEscape($db, $text);
     $sql = "UPDATE `gallery_reviews` SET `author`='$author', `text`='$text' WHERE `id`=$id";
+    return execQuery($sql, $db);
+}
+
+/** Удаление отзыва
+ * @param   integer   $id       Идентификатор отзыва
+ * @return  boolean             Результат удаления
+ */
+function deleteReview($id) {
+    $db = createConnection();
+    $id = (int)$id;
+    $sql = "DELETE FROM `gallery_reviews` WHERE `id`=$id";
     return execQuery($sql, $db);
 }
