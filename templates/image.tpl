@@ -3,6 +3,12 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
+    <style type="text/css">
+        .img {
+            float: left;
+            margin-right: 1%;
+        }
+    </style>
     <title>{{NAME}}</title>
 </head>
 <body>
@@ -17,11 +23,16 @@
         </ul>
     </header>
     <h3>{{NAME}}</h3>
-    <div>
-        <img src="{{URL}}" alt="{{NAME}}">
+    <div class="container">
+        <div class="img">
+            <img src="{{URL}}" alt="{{NAME}}">
+        </div>
+        <div class="txt">
+            <span>{{DESCRIPTION}}</span>
+        </div>
     </div>
     <br>
-    <a href="/gallery.php"><< Назад</a>
     <p>Просмотров: {{VIEWS}}</p>
+    <a href="/gallery.php"><< Назад</a>
 </body>
 </html>
