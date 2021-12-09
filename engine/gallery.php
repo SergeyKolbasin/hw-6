@@ -63,7 +63,7 @@ function getImage($id)
     return getSingle($sql);                             // и возвращаем результат, выполняя его
 }
 
-/** Функция возвращает HTML-код отображения странцы фото из БД по его id
+/** Функция возвращает HTML-код отображения страницы фото из БД по его id
  *
  * @param   integer     $id     Идентификатор отображаемой фотографии
  * @return  array               HTML-код отображения страницы с фото
@@ -82,7 +82,7 @@ function showImage($id)
     }
     $image['views']++;                                      // Увеличиваем количество просмотров на 1
     updateViews($id, $image['views']);                      // Запишем их в БД
-    return render(TEMPLATES_DIR . 'image.tpl', $image);     // Возвращаем HTML-код отображения страницы с фото
+    return render(TEMPLATES_DIR . 'product.tpl', $image);     // Возвращаем HTML-код отображения страницы с фото
 }
 
 /** Функция записывает количество просмотров фото заданного $id в БД

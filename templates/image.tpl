@@ -17,7 +17,6 @@
             <li><a href="/">Главная</a></li>
             <li><a href="/news.php">Новости</a></li>
             <li><a href="/gallery.php">Галерея</a></li>
-            <li><a href="/gallery.php">Товары</a></li>
             <li><a href="/reviews.php">Отзывы</a></li>
             <li><a href="/contacts.php">Контакты</a></li>
         </ul>
@@ -30,9 +29,9 @@
         <div class="txt">
             <span>{{DESCRIPTION}}</span>
         </div>
+        <p>Просмотров: {{VIEWS}}</p>
+        <a href="/gallery.php"><< Назад</a>
     </div>
     <br>
-    <p>Просмотров: {{VIEWS}}</p>
-    <a href="/gallery.php"><< Назад</a>
 </body>
 </html>
