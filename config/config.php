@@ -15,6 +15,7 @@
     define('WWW_DIR', SITE_DIR . 'public/');            // Каталог, доступный посетителям сайта
     define('TEMPLATES_DIR', SITE_DIR . 'templates/');   // Шаблоны
     define('IMG_DIR', 'img/');                          // Изображения
+    define('PRODUCT_DIR', IMG_DIR . 'product/');               // Фотографии товаров
     
     // Константы соединения с б/д
     define('DB_HOST', 'hw');                            // Доменное имя сервера
