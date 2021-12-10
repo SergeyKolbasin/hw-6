@@ -28,6 +28,7 @@ function renderGallery(
         $result .= '<td>';                                                                  // Начинаем столбец
             $result .= '<a href=image.php?id=' . strval($url['id']) . '>';        // Формируем ссылку
             $result .= '<img src=' .  $url['url'] . ' alt=' . $url['name'] . ' width="100"/>';  // Формируем превью
+            $result .= '<br>Товар';
             $result .= '</a>';                                                              // Закрываем ссылку
         $result .= '</td>';                                                                 // Закрываем столбец
         if ((($k + 1) % $fColumns == 0)) {                          // Переходим на следеющею строку при заполнении
@@ -87,7 +88,7 @@ function showImage($id)
 
 /** Функция записывает количество просмотров фото заданного $id в БД
  *
- * @param   intger      $id     Идентификатор фотографии
+ * @param   integer      $id     Идентификатор фотографии
  * @param   integer     $views  Количество записываемых просмотров
  * @return  boolean             Результат обновления записи таблицы
  */
