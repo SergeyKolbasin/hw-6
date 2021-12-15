@@ -14,7 +14,7 @@
 <body>
     <header>
         <ul>
-            <li><a href="/">Редактировать</a></li>
+            <li><a href="editProduct.php?id={{ID}}">Редактировать</a></li>
         </ul>
     </header>
     <h3>{{NAME}}</h3>

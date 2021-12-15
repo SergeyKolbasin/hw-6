@@ -29,7 +29,7 @@ if ($author !== $review['author'] || $text !== $review['text']) {
 echo '<hr>';
 */
 ?>
-<h4>Редактировать товар:</h4>
+<h3><?= $product['name'] ?></h3>
 <form method="POST">
     <span>Описание: </span><textarea name="description"><?= $description ?></textarea><br><br>
     <span>Цена: </span><input type="number" name="author" value="<?= $price ?>"><br><br>
