@@ -26,9 +26,9 @@ function renderGallery(
     foreach ($urls as $url) {
         if ($k % $fColumns == 0) echo '<tr>';                                               // Добавляем строку
         $result .= '<td>';                                                                  // Начинаем столбец
-            $result .= '<a href=image.php?id=' . strval($url['id']) . '>';        // Формируем ссылку
+            $result .= '<a href=image.php?id=' . strval($url['id']) . '>';                  // Формируем ссылку
             $result .= '<img src=' .  $url['url'] . ' alt=' . $url['name'] . ' width="100"/>';  // Формируем превью
-            $result .= '<br>Товар';
+            $result .= '<br>' . $url['name'];
             $result .= '</a>';                                                              // Закрываем ссылку
         $result .= '</td>';                                                                 // Закрываем столбец
         if ((($k + 1) % $fColumns == 0)) {                          // Переходим на следеющею строку при заполнении

@@ -27,9 +27,6 @@ if ($name !== $product['name'] || $description !== $product['description'] || $p
     }
 }
 echo '<hr>';
-var_dump($name);
-var_dump($description);
-var_dump($price);
 ?>
 <!doctype>
 <html lang="ru">
@@ -47,7 +44,7 @@ var_dump($price);
 <h3><?= $product['name'] ?></h3>
 <div class="container">
     <div class="img">
-        <img src="<?= $product['url'] ?>" alt="<?= $product['name'] ?>">
+        <img src="<?= $product['url'] ?>" alt="<?= $product['name'] ?>" width="800" height="600">
     </div>
 </div>
 <br>

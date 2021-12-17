@@ -20,7 +20,7 @@
     <h3>{{NAME}}</h3>
     <div class="container">
         <div class="img">
-            <img src="{{URL}}" alt="{{NAME}}">
+            <img src="{{URL}}" alt="{{NAME}}" width="800" height="600">
         </div>
         <div class="txt">
             <span>{{DESCRIPTION}}</span>
