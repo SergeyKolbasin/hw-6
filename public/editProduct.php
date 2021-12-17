@@ -17,13 +17,11 @@ $price = $_POST['price'] ?? $product['price'];
 if ($name !== $product['name'] || $description !== $product['description'] || $price !== $product['price']) {
     if ($name && $description && $price) {
         // Редактируем товар
-        /*
-        if (updateProduct($id, $name, $description, $price)) {
+        if (updateProduct($id, $name, $description, $price) == 1) {     // запросом д/б затронута только одна запись
             echo 'Товар изменен';
         } else {
             echo 'Произошла ошибка';
         }
-        */
     } elseif ($name || $description || $price) {
         echo 'Форма не заполнена';
     }

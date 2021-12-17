@@ -32,7 +32,7 @@ function createConnection()
  * @param   object  $db     Объект, представляющий связь с БД
  * @return  integer         Количество записей, затронутых SQL-запросом
  */
-function execQuery($sql, $db=null)
+function execQuery($sql, $db=null): int
 {
     if (!$db) {                             // Создание соединения, если его нет
         $db = createConnection();

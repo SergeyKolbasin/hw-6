@@ -111,7 +111,7 @@ function editImage($id)
 */
 /** Функция записывает количество просмотров фото заданного $id в БД
  *
- * @param   integer      $id     Идентификатор фотографии
+ * @param   integer     $id     Идентификатор фотографии
  * @param   integer     $views  Количество записываемых просмотров
  * @return  boolean             Результат обновления записи таблицы
  */
@@ -124,4 +124,23 @@ function updateViews(
     $viewsStr = strval($views);                                           // Число преобразем в строку
     $sql = "UPDATE `gallery` SET `views`=$viewsStr WHERE `id` = $id";     // Формируем SQL-запрос
     return execQuery($sql);                                               // Выполняем его
+}
+
+/** Редактирование карточки продукта
+ * @param   integer     $id             идентификатор
+ * @param   string      $name           наименование товара
+ * @param   string      $description    текст отзыва
+ * @return  integer                     количество записей, затронутых запросом
+ */
+function updateProduct($id, $name, $description, $price): int
+{
+    $db = createConnection();
+    $id = (int)$id;
+    // Защита
+    $name = realEscape($db, $name);
+    $description = realEscape($db, $description);
+    $price = (float)$price;
+    // Обновление в БД
+    $sql = "UPDATE `gallery` SET `name`='$name', `description`='$description' WHERE `id`=$id";
+    return execQuery($sql, $db);
 }

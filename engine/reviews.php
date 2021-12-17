@@ -8,7 +8,8 @@
  * @param   string  $sql    Выражение sql-запроса для получения отзывов
  * @return  array           Массив с отзывами
  */
-function    getReviews() {
+function    getReviews(): array
+{
     $sql = "SELECT * FROM gallery_reviews ORDER BY `gallery_reviews`.`date` DESC";
     return getAssocResult($sql);
 }
@@ -24,11 +25,10 @@ function getReview($id) {
     return getSingle($sql);
 }
 
-
 /** Отображение отзывов на страницу
  *
  * @param   array   $reviews    Массив отзывов
- * @return  text                HTML-код отзывов
+ * @return  string              HTML-код отзывов
  */
 function renderReviews($reviews)
 {
@@ -50,7 +50,7 @@ function renderReviews($reviews)
 /** Вставка отзыва
  *
  * @param   string  $author Автор отзыва
- * @param   text    $text   Текст отзыва
+ * @param   string  $text   Текст отзыва
  * @return  boolean         Результат выполнения вставки отзыва
  */
 function insertReview($author, $text) {
