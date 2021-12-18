@@ -141,6 +141,6 @@ function updateProduct($id, $name, $description, $price): int
     $description = realEscape($db, $description);
     $price = (float)$price;
     // Обновление в БД
-    $sql = "UPDATE `gallery` SET `name`='$name', `description`='$description' WHERE `id`=$id";
+    $sql = "UPDATE `gallery` SET `name`='$name', `description`='$description', `price`='$price' WHERE `id`=$id";
     return execQuery($sql, $db);
 }

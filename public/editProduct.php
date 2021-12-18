@@ -49,7 +49,7 @@ echo '<hr>';
 </div>
 <br>
 
-<form method="POST">
+<form enctype="multipart/form-data" method="POST">
     <span>Наименование: </span><input type="text" name="name" size="35" value="<?= $name ?>"><br><br>
     <fielset>
         <legend>Описание:</legend>
@@ -57,6 +57,8 @@ echo '<hr>';
     </fielset>
     <br><br>
     <span>Цена: </span><input type="number" name="price" value="<?= $price ?>" min="0" step="0.01"><br><br>
+    <input type="hidden" name="MAX_FILE_SIZE" value="30000000">
+    <span>Загрузить этот файл: </span><input type="file" name="userfile"><br><br>
     <input type="submit" value="Отправить">
 </form>
 <!-- Возврат из формы редактирования -->
