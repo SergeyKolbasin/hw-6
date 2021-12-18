@@ -9,10 +9,11 @@ if (!$id) {
     exit();
 }
 $product = getImage($id);
-//die;
-$name = $_POST['name'] ?? $product['name'];
-$description = $_POST['description'] ?? $product['description'];
-$price = $_POST['price'] ?? $product['price'];
+
+$name = $_POST['name'] ?? $product['name'];                         // наименование товара
+$description = $_POST['description'] ?? $product['description'];    // описание товара
+$price = $_POST['price'] ?? $product['price'];                      // цена товара
+$url = $product['url'];                                             // фото товара
 // Проверка, редактировались ли параметры товара
 if ($name !== $product['name'] || $description !== $product['description'] || $price !== $product['price']) {
     if ($name && $description && $price) {
@@ -26,6 +27,26 @@ if ($name !== $product['name'] || $description !== $product['description'] || $p
         echo 'Форма не заполнена';
     }
 }
+if (!empty($_FILES)) {
+    // Если выбран файл для загрузки
+    if (isset($_FILES['userfile']) && ($_FILES['userfile']['error']) !== UPLOAD_ERR_NO_FILE) {
+        echo 'Выбран файл<br>';
+        var_dump($_FILES);
+        // Загружаем файл на сервер
+        $upload_dir = PRODUCT_DIR;
+        //$upload_file = $upload_dir . basename($_FILES['userfile']['name']);
+        $upload_file = $url;
+        // Переносим временный файл
+        if (move_uploaded_file($_FILES['userfile']['tmp_name'], $upload_file)) {
+            echo 'Файл корректен и был успешно загружен.';
+        } else {
+            echo 'Возможная атака с помощью фаловой загрузки';
+        }
+
+        // и возможно обновить страницу с новым фото
+    }
+}
+
 echo '<hr>';
 ?>
 <!doctype>
