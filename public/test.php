@@ -4,4 +4,7 @@
  */
 require_once '../config/config.php';
 
-var_dump(getNews());
+$arrID = enquireID();
+foreach ($arrID as $key => $val) {
+    echo (int)$val['id'] . ' ';
+}

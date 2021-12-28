@@ -1,18 +1,54 @@
+<!-- Добавление нового товара -->
+<!doctype>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <style type="text/css">
+        .img {
+            float: left;
+            margin-right: 1%;
+        }
+    </style>
+    <title>Новый товар</title>
+</head>
+<body>
+<h3>Новый товар</h3>
+<!--
+<div class="container">
+    <div class="img">
+        <img src="<?= $product['url'] ?>" alt="<?= $product['name'] ?>" width="800" height="600">
+    </div>
+</div>
+<br>
+-->
+<form enctype="multipart/form-data" method="POST">
+    <span>Наименование: </span><input type="text" name="name" size="35"><br><br>
+    <fielset>
+        <legend>Описание:</legend>
+        <textarea name="description" cols="50" rows="15"></textarea>
+    </fielset>
+    <br><br>
+    <span>Цена: </span><input type="number" name="price" min="0" step="0.01"><br><br>
+    <input type="hidden" name="MAX_FILE_SIZE" value="30000000">
+    <span>Загрузить этот файл: </span><input type="file" name="userfile"><br><br>
+    <input type="submit" value="Отправить">
+</form>
+<!-- Возврат из формы редактирования -->
+<a href="/gallery.php"><< Назад</a><br>
+<a href="index.php">На главную</a>
+</body>
+
 <?php
 /*
  * Добавление нового товара
  */
-require_once '../config/config.php';
-$id = isset($_GET['id']) ? $_GET['id'] : false;
-if (!$id) {
-    echo 'id не передан';
-    exit();
-}
-$product = getImage($id);
 
-$name = $_POST['name'] ?? $product['name'];                         // наименование товара
-$description = $_POST['description'] ?? $product['description'];    // описание товара
-$price = $_POST['price'] ?? $product['price'];                      // цена товара
+require_once '../config/config.php';
+
+$name = $_POST['name'] ?? '';                           // наименование товара
+$description = $_POST['description'] ?? '';             // описание товара
+$price = $_POST['price'] ?? '';                         // цена товара
+/*
 $url = $product['url'];                                             // фото товара
 // Проверка, редактировались ли параметры товара
 if ($name !== $product['name'] || $description !== $product['description'] || $price !== $product['price']) {
@@ -48,41 +84,5 @@ if (!empty($_FILES)) {
 }
 
 echo '<hr>';
+*/
 ?>
-<!doctype>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <style type="text/css">
-        .img {
-            float: left;
-            margin-right: 1%;
-        }
-    </style>
-    <title><?= $product['name'] ?></title>
-</head>
-<body>
-<h3><?= $product['name'] ?></h3>
-<div class="container">
-    <div class="img">
-        <img src="<?= $product['url'] ?>" alt="<?= $product['name'] ?>" width="800" height="600">
-    </div>
-</div>
-<br>
-
-<form enctype="multipart/form-data" method="POST">
-    <span>Наименование: </span><input type="text" name="name" size="35" value="<?= $name ?>"><br><br>
-    <fielset>
-        <legend>Описание:</legend>
-        <textarea name="description" cols="50" rows="15"><?= $description ?></textarea>
-    </fielset>
-    <br><br>
-    <span>Цена: </span><input type="number" name="price" value="<?= $price ?>" min="0" step="0.01"><br><br>
-    <input type="hidden" name="MAX_FILE_SIZE" value="30000000">
-    <span>Загрузить этот файл: </span><input type="file" name="userfile"><br><br>
-    <input type="submit" value="Отправить">
-</form>
-<!-- Возврат из формы редактирования -->
-<a href="/gallery.php"><< Назад</a><br>
-<a href="index.php">На главную</a>
-</body>
