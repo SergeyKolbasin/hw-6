@@ -47,22 +47,24 @@ require_once '../config/config.php';
 
 $name = $_POST['name'] ?? '';                           // наименование товара
 $description = $_POST['description'] ?? '';             // описание товара
-$price = $_POST['price'] ?? '';                         // цена товара
-/*
-$url = $product['url'];                                             // фото товара
+$price = $_POST['price'] ?? 0.0;                        // цена товара
+
+//$url = $product['url'];                                             // фото товара
+
 // Проверка, редактировались ли параметры товара
-if ($name !== $product['name'] || $description !== $product['description'] || $price !== $product['price']) {
+if ($name !== '' && $description !== '' || $price !== 0.0) {
     if ($name && $description && $price) {
-        // Редактируем товар
-        if (updateProduct($id, $name, $description, $price) == 1) {     // запросом д/б затронута только одна запись
+        // Добавляем товар
+        if (insertProduct($name, $description, $price) == 1) {     // запросом д/б затронута только одна запись
             echo 'Товар изменен';
         } else {
             echo 'Произошла ошибка';
         }
-    } elseif ($name || $description || $price) {
+    } elseif ($name && $description && $price) {
         echo 'Форма не заполнена';
     }
 }
+/*
 if (!empty($_FILES)) {
     // Если выбран файл для загрузки
     if (isset($_FILES['userfile']) && ($_FILES['userfile']['error']) !== UPLOAD_ERR_NO_FILE) {

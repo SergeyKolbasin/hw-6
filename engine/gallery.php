@@ -126,10 +126,11 @@ function updateViews(
     return execQuery($sql);                                               // Выполняем его
 }
 
-/** Редактирование карточки продукта
+/** Редактирование карточки товара
  * @param   integer     $id             идентификатор
  * @param   string      $name           наименование товара
- * @param   string      $description    текст отзыва
+ * @param   string      $description    описание товара
+ * @param   float       $price          цена товара
  * @return  integer                     количество записей, затронутых запросом
  */
 function updateProduct($id, $name, $description, $price): int
@@ -142,5 +143,24 @@ function updateProduct($id, $name, $description, $price): int
     $price = (float)$price;
     // Обновление в БД
     $sql = "UPDATE `gallery` SET `name`='$name', `description`='$description', `price`='$price' WHERE `id`=$id";
+    return execQuery($sql, $db);
+}
+
+/** Добавление карточки товара
+ * @param   string      $name           наименование товара
+ * @param   string      $description    описание товара
+ * @param   float       $price          цена товара
+ * @return  integer                     количество записей, затронутых запросом
+ */
+function insertProduct($name, $description, $price): int
+{
+    $db = createConnection();
+    // Защита
+    $name = realEscape($db, $name);
+    $description = realEscape($db, $description);
+    $views = 0;                                     // колчество просмотров
+    $price = (float)$price;
+    // Добавление в БД
+    $sql = "INSERT INTO `gallery`(`name`, `description`, `views`, `price`) VALUES ('$name', '$description', '$views', '$price')";
     return execQuery($sql, $db);
 }

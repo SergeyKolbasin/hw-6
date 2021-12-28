@@ -58,7 +58,6 @@ function insertReview($author, $text) {
     // Защита введенных выражений
     $author = realEscape($db, $author);
     $text = realEscape($db, $text);
-    
     $sql = "INSERT INTO `gallery_reviews`(`author`, `text`) VALUES ('$author', '$text')";
     return execQuery($sql, $db);
 }
