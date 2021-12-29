@@ -164,3 +164,19 @@ function insertProduct($name, $description, $price): int
     $sql = "INSERT INTO `gallery`(`name`, `description`, `views`, `price`) VALUES ('$name', '$description', '$views', '$price')";
     return execQuery($sql, $db);
 }
+
+/** Получение имени файла для добавления нового изображения товара, имя файла = его ID в БД
+ *
+ * @return  integer                     ID нового товара, соответствует имени файла в галерее
+ *                                          или 0, если произошла ошибка
+ */
+function getProductName(): int
+{
+    $sql = "SELECT `auto_increment` FROM information_schema.tables WHERE table_schema='" . DB_NAME . "' AND table_name='" . TABLE_PRODUCT . "'";
+    $newID = getSingle($sql);
+    if ($newID !== NULL) {
+        return (int)$newID['auto_increment'];
+    } else {
+        return 0;
+    }
+}

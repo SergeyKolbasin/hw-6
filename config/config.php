@@ -25,6 +25,7 @@
     
     // Прочие константы
     define('COLUMNS', 4);                               // Количество колонок при отображении галереи
+    define('TABLE_PRODUCT', 'gallery');                 // Имя таблицы с товарами
     
     require_once ENGINE_DIR . 'calc_functions.php';     // Функции калькуляторов
     require_once ENGINE_DIR . 'functions.php';          // Общепользовательские функции
