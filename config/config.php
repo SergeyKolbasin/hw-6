@@ -26,7 +26,8 @@
     // Прочие константы
     define('COLUMNS', 4);                               // Количество колонок при отображении галереи
     define('TABLE_PRODUCT', 'gallery');                 // Имя таблицы с товарами
-    
+    define('MAX_FILE_SIZE', 30000000);                  // Максималный размер загружаемого файла
+
     require_once ENGINE_DIR . 'calc_functions.php';     // Функции калькуляторов
     require_once ENGINE_DIR . 'functions.php';          // Общепользовательские функции
     require_once ENGINE_DIR . 'db.php';                 // Функции работы с БД
