@@ -154,17 +154,19 @@ function updateProduct($id, $name, $description, $price): int
  * @param   integer     $size           размер файла в байтах
  * @return  integer                     количество записей, затронутых запросом
  */
-function insertProduct($name, $description, $price, $url): int
+function insertProduct($name, $description, $price, $url, $size): int
 {
     $db = createConnection();
     // Защита
     $name = realEscape($db, $name);
     $description = realEscape($db, $description);
     $url = realEscape($db, $url);
+    $size = (int)$size;
     $views = 0;                                     // колчество просмотров
     $price = (float)$price;
     // Добавление в БД
-    $sql = "INSERT INTO `gallery`(`name`, `description`, `views`, `price`, `url`) VALUES ('$name', '$description', '$views', '$price', '$url')";
+    $sql = "INSERT INTO `gallery`(`name`, `description`, `views`, `price`, `url`, `size`)
+                VALUES ('$name', '$description', '$views', '$price', '$url', '$size')";
     return execQuery($sql, $db);
 }
 

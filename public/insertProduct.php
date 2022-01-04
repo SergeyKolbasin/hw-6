@@ -12,15 +12,14 @@ $price = $_POST['price'] ?? 0.0;                        // цена товара
 if (!empty($_FILES)) {
     // Если выбран файл для загрузки
     if (isset($_FILES['userfile']) && ($_FILES['userfile']['error']) !== UPLOAD_ERR_NO_FILE) {
-        echo 'Выбран файл<br>';
-        var_dump($_FILES);
         // Загружаем файл на сервер
         $uploadDir = PRODUCT_DIR;
         $uploadFile = getProductName() . getExtension($_FILES['userfile']['name']);
         $url = $uploadDir . $uploadFile;
+        $size = $_FILES['userfile']['size'];
         // Переносим временный файл
         if (move_uploaded_file($_FILES['userfile']['tmp_name'], $url)) {
-            echo 'Файл корректен и был успешно загружен.';
+            echo 'Файл корректен и был успешно загружен.' . '<br>';
         } else {
             echo 'Возможная атака с помощью файловой загрузки';
         }
@@ -28,16 +27,16 @@ if (!empty($_FILES)) {
         if ($name !== '' && $description !== '' || $price !== 0.0 || $url !== '') {
             if ($name && $description && $price) {
                 // Добавляем товар
-                if (insertProduct($name, $description, $price, $url) == 1) {     // запросом д/б затронута только одна запись
-                    echo 'Товар добавлен';
+                if (insertProduct($name, $description, $price, $url, $size) == 1) {     // запросом д/б затронута только одна запись
+                    echo 'Товар добавлен' . '<br>';
                 } else {
-                    echo 'Произошла ошибка';
+                    echo 'Произошла ошибка' . '<br>';
                 }
             } elseif ($name && $description && $price) {
                 echo 'Форма не заполнена';
             }
         }
-        // и возможно обновить страницу с новым фото
+        
     }
 }
 echo '<hr>';
