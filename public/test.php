@@ -9,3 +9,4 @@ $sql = "SELECT `auto_increment` FROM information_schema.tables WHERE table_schem
     . TABLE_PRODUCT . "'";
 $newID = getSingle($sql);
 var_dump((int)$newID['auto_increment']);
+echo 'test';
