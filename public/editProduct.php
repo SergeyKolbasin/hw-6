@@ -19,31 +19,28 @@ if ($name !== $product['name'] || $description !== $product['description'] || $p
     if ($name && $description && $price) {
         // Редактируем товар
         if (updateProduct($id, $name, $description, $price) == 1) {     // запросом д/б затронута только одна запись
-            echo 'Товар изменен';
+            echo 'Товар изменен' . '<br>';
         } else {
-            echo 'Произошла ошибка';
+            echo 'Произошла ошибка' . '<br>';
         }
     } elseif ($name || $description || $price) {
-        echo 'Форма не заполнена';
+        echo 'Форма не заполнена' . '<br>';
     }
 }
 if (!empty($_FILES)) {
     // Если выбран файл для загрузки
     if (isset($_FILES['userfile']) && ($_FILES['userfile']['error']) !== UPLOAD_ERR_NO_FILE) {
-        echo 'Выбран файл<br>';
-        var_dump($_FILES);
         // Загружаем файл на сервер
         $upload_dir = PRODUCT_DIR;
         //$upload_file = $upload_dir . basename($_FILES['userfile']['name']);
         $upload_file = $url;
         // Переносим временный файл
         if (move_uploaded_file($_FILES['userfile']['tmp_name'], $upload_file)) {
-            echo 'Файл корректен и был успешно загружен.';
+            echo 'Файл фотографии корректен и был успешно загружен.' . '<br>';
         } else {
-            echo 'Возможная атака с помощью фаловой загрузки';
+            echo 'Возможная атака с помощью фаловой загрузки' . '<br>';
         }
-
-        // и возможно обновить страницу с новым фото
+        // и здесь возможно обновить страницу с новым фото ?
     }
 }
 
