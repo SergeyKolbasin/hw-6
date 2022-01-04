@@ -167,16 +167,16 @@ function insertProduct($name, $description, $price): int
 
 /** Получение имени файла для добавления нового изображения товара, имя файла = его ID в БД
  *
- * @return  integer                     ID нового товара, соответствует имени файла в галерее
- *                                          или 0, если произошла ошибка
+ * @return  string          Числовое имя нового товара, соответствует ID в БД
+ *                          или '0', если произошла ошибка
  */
-function getProductName(): int
+function getProductName(): string
 {
     $sql = "SELECT `auto_increment` FROM information_schema.tables WHERE table_schema='" . DB_NAME . "' AND table_name='" . TABLE_PRODUCT . "'";
     $newID = getSingle($sql);
     if ($newID !== NULL) {
-        return (int)$newID['auto_increment'];
+        return (string)$newID['auto_increment'];
     } else {
-        return 0;
+        return '0';
     }
 }

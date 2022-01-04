@@ -4,7 +4,7 @@ require_once '../config/config.php';
  *
  * @param   string    $file         Имя и полный путь к файлу шаблона
  * @param   array     $variables    Массив переменных, переданных в шаблон
- * @return  html                    HTML документ
+ * @return  string                  HTML документ
  */
 function render($file, $variables = [])
 {
@@ -32,4 +32,13 @@ function render($file, $variables = [])
 	}
 	return $templateContent;
 }
-    
+
+/** Функция получения расширения файла
+ *
+ * @param   string      $fileName       имя файла
+ * @return  string                      расширение файла с точкой
+ */
+function getExtension($fileName): string
+{
+    return substr($fileName, strrpos($fileName, '.'));
+}
