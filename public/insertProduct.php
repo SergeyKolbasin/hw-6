@@ -8,45 +8,40 @@ require_once '../config/config.php';
 $name = $_POST['name'] ?? '';                           // наименование товара
 $description = $_POST['description'] ?? '';             // описание товара
 $price = $_POST['price'] ?? 0.0;                        // цена товара
-
-//$url = $product['url'];                                             // фото товара
-
-// Проверка, редактировались ли параметры товара
-if ($name !== '' && $description !== '' || $price !== 0.0) {
-    if ($name && $description && $price) {
-        // Добавляем товар
-        if (insertProduct($name, $description, $price) == 1) {     // запросом д/б затронута только одна запись
-            echo 'Товар добавлен';
-        } else {
-            echo 'Произошла ошибка';
-        }
-    } elseif ($name && $description && $price) {
-        echo 'Форма не заполнена';
-    }
-}
-
-/*
+// Загружаем файл
 if (!empty($_FILES)) {
     // Если выбран файл для загрузки
     if (isset($_FILES['userfile']) && ($_FILES['userfile']['error']) !== UPLOAD_ERR_NO_FILE) {
         echo 'Выбран файл<br>';
         var_dump($_FILES);
         // Загружаем файл на сервер
-        $upload_dir = PRODUCT_DIR;
-        //$upload_file = $upload_dir . basename($_FILES['userfile']['name']);
-        $upload_file = $url;
+        $uploadDir = PRODUCT_DIR;
+        $uploadFile = getProductName() . getExtension($_FILES['userfile']['name']);
+        $url = $uploadDir . $uploadFile;
         // Переносим временный файл
-        if (move_uploaded_file($_FILES['userfile']['tmp_name'], $upload_file)) {
+        if (move_uploaded_file($_FILES['userfile']['tmp_name'], $url)) {
             echo 'Файл корректен и был успешно загружен.';
         } else {
             echo 'Возможная атака с помощью файловой загрузки';
         }
-
+        // Проверка, вводились ли параметры товара
+        if ($name !== '' && $description !== '' || $price !== 0.0 || $url !== '') {
+            if ($name && $description && $price) {
+                // Добавляем товар
+                if (insertProduct($name, $description, $price, $url) == 1) {     // запросом д/б затронута только одна запись
+                    echo 'Товар добавлен';
+                } else {
+                    echo 'Произошла ошибка';
+                }
+            } elseif ($name && $description && $price) {
+                echo 'Форма не заполнена';
+            }
+        }
         // и возможно обновить страницу с новым фото
     }
 }
 echo '<hr>';
-*/
+
 ?>
 
 <!-- Добавление нового товара -->
