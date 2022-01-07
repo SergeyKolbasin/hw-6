@@ -13,7 +13,7 @@ $name = $product['name'];
 $url = $product['url'];
 $price = $product['price'];
 
-// Удаляем комментарий
+// Удаляем запись из БД и файл фотографии
 if (deleteProduct($id) && unlink($url)) {
     echo 'Удален товар: ';
     echo '"<b>' . $name . '</b>, стоимостью: ' . $price . '"';
