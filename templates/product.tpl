@@ -16,7 +16,7 @@
         <ul>
             <li><a href="insertProduct.php">Вставить новый</a></li>
             <li><a href="editProduct.php?id={{ID}}">Редактировать</a></li>
-            <li>Удалить</li>
+            <li><a href="deleteProduct.php?id={{ID}}">Удалить</a></li>
         </ul>
     </header>
     <h3>{{NAME}}</h3>

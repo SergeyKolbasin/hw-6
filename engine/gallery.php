@@ -164,7 +164,16 @@ function getProductName(): string
     }
 }
 
-
+/** Удаление товара
+ * @param   integer   $id       Идентификатор отзыва
+ * @return  boolean             Результат удаления
+ */
+function deleteProduct($id) {
+    $db = createConnection();
+    $id = (int)$id;
+    $sql = "DELETE FROM `gallery` WHERE `id`=$id";
+    return execQuery($sql, $db);
+}
 
 
 
