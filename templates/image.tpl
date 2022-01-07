@@ -31,6 +31,8 @@
         </div>
         <p>Просмотров: {{VIEWS}}</p>
         <a href="/gallery.php"><< Назад</a>
+        <br>
+        <a href="/index.php">На главную</a>
     </div>
     <br>
 </body>

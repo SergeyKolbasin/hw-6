@@ -14,7 +14,9 @@
 <body>
     <header>
         <ul>
+            <li><a href="insertProduct.php">Вставить новый</a></li>
             <li><a href="editProduct.php?id={{ID}}">Редактировать</a></li>
+            <li>Удалить</li>
         </ul>
     </header>
     <h3>{{NAME}}</h3>
@@ -27,6 +29,8 @@
             <p>Просмотров: {{VIEWS}}</p>
             <p><b>Цена: {{PRICE}}</b></p>
             <a href="/gallery.php"><< Назад</a>
+            <br>
+            <a href="/index.php">На главную</a>
         </div>
     </div>
     <br>
