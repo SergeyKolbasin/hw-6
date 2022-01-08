@@ -8,6 +8,7 @@ if (!$id) {
     echo 'id не передан';
     exit();
 }
+$id = (int)$id;
 $product = getImage($id);
 
 $name = $_POST['name'] ?? $product['name'];                         // наименование товара
