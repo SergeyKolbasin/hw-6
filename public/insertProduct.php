@@ -20,16 +20,18 @@ $price = $_POST['price'] ?? '';                        // цена товара
                         // Переносим временный файл
                         if (move_uploaded_file($_FILES['userfile']['tmp_name'], $url)) {
                             echo 'Файл корректен и был успешно загружен.' . '<br>';
+                            // Добавляем товар в БД
+                            if (insertProduct($name, $description, $price, $url, $size) == 1) {     // запросом д/б затронута только одна запись
+                                echo 'Товар добавлен' . '<br>';
+                            } else {
+                                echo 'Произошла ошибка' . '<br>';
+                            }
                         } else {
                             echo 'Возможная атака с помощью файловой загрузки';
                         }
+                    } else {
+                        echo 'Файл не выбран';
                     }
-                }
-                // Добавляем товар в БД
-                if (insertProduct($name, $description, $price, $url, $size) == 1) {     // запросом д/б затронута только одна запись
-                    echo 'Товар добавлен' . '<br>';
-                } else {
-                    echo 'Произошла ошибка' . '<br>';
                 }
             } else {
                 echo 'Форма не заполнена';

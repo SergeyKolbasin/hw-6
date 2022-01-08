@@ -16,6 +16,8 @@
         </ul>
     </header>
     <h3>{{HEAD}}</h3>
+    <a href="insertProduct.php">Новый питомец</a>
+    <br><br>
     <div>{{CONTENT}}</div>
 </body>
 </html>
