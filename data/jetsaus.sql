@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Янв 14 2022 г., 10:27
+-- Время создания: Янв 14 2022 г., 10:54
 -- Версия сервера: 10.4.22-MariaDB
 -- Версия PHP: 8.1.1
 
@@ -20,6 +20,20 @@ SET time_zone = "+00:00";
 --
 -- База данных: `jetsaus`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` smallint(5) DEFAULT NULL COMMENT 'id покупки',
+  `id_product` smallint(5) NOT NULL COMMENT 'id товара',
+  `id_user` smallint(5) NOT NULL COMMENT 'id пользователя',
+  `quantity` smallint(5) NOT NULL COMMENT 'количество товара',
+  `last_action` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Корзина покупателя';
 
 -- --------------------------------------------------------
 
