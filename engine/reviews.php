@@ -5,7 +5,6 @@
 
 /**
  * Получение отзывов из БД
- * @param   string  $sql    Выражение sql-запроса для получения отзывов
  * @return  array           Массив с отзывами
  */
 function    getReviews(): array
@@ -19,7 +18,10 @@ function    getReviews(): array
  * @param       integer    $id  Идентификатор отзыва
  * @return      array           Массив, содержащий поля отзыва
  */
-function getReview($id) {
+function getReview(
+    int $id
+):array
+{
     $id = (int)$id;
     $sql = "SELECT * FROM `gallery_reviews` WHERE `id`=$id";
     return getSingle($sql);
@@ -30,7 +32,9 @@ function getReview($id) {
  * @param   array   $reviews    Массив отзывов
  * @return  string              HTML-код отзывов
  */
-function renderReviews($reviews)
+function renderReviews(
+    array $reviews
+):string
 {
     $reviews = getReviews();
     $reviewsContent = '';
@@ -53,7 +57,11 @@ function renderReviews($reviews)
  * @param   string  $text   Текст отзыва
  * @return  boolean         Результат выполнения вставки отзыва
  */
-function insertReview($author, $text) {
+function insertReview(
+    string  $author = '',
+    string  $text = ''
+):bool
+{
     $db = createConnection();
     // Защита введенных выражений
     $author = realEscape($db, $author);
@@ -68,7 +76,12 @@ function insertReview($author, $text) {
  * @param   $text       $text   Текст отзыва
  * @return  boolean             Результат выполнения редактирования
  */
-function updateReview($id, $author, $text) {
+function updateReview(
+    int     $id = 0,
+    string  $author = '',
+    string  $text = ''
+): bool
+{
     $db = createConnection();
     $id = (int)$id;
     // Защита от тегов
@@ -82,7 +95,10 @@ function updateReview($id, $author, $text) {
  * @param   integer   $id       Идентификатор отзыва
  * @return  boolean             Результат удаления
  */
-function deleteReview($id) {
+function deleteReview(
+    int $id = 0
+):bool
+{
     $db = createConnection();
     $id = (int)$id;
     $sql = "DELETE FROM `gallery_reviews` WHERE `id`=$id";

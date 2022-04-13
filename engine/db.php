@@ -9,7 +9,7 @@
  * @param string DB_USER    Имя пользователя
  * @param string DB_PASS    Пароль
  * @param string DB_NAME    Имя БД
- * @return mixed            Объект, представляющий связь с БД или false
+ * @return object            Объект, представляющий связь с БД или false
  */
 function createConnection()
 {
@@ -29,10 +29,13 @@ function createConnection()
  * Применяется только для модификации данных
  *
  * @param   string  $sql    SQL-запрос
- * @param   object  $db     Объект, представляющий связь с БД
+ * @param   mixed   $db     Объект, представляющий связь с БД
  * @return  integer         Количество записей, затронутых SQL-запросом
  */
-function execQuery($sql, $db=null): int
+function execQuery(
+    string  $sql = '',
+    object  $db=null
+): int
 {
     if (!$db) {                             // Создание соединения, если его нет
         $db = createConnection();
@@ -48,7 +51,9 @@ function execQuery($sql, $db=null): int
  * @param   string      $sql    SQL-запрос
  * @return  array               $Возвращает ассоциативный массив с выборкой
  */
-function getAssocResult($sql)
+function getAssocResult(
+    string  $sql = ''
+):array
 {
     $db = createConnection();                       // Создание соединения
     $result = mysqli_query($db, $sql);              // Выполнение запроса к БД
@@ -65,7 +70,9 @@ function getAssocResult($sql)
  * @param   string      $sql    SQL-запрос
  * @return  array               Возвращает ассоциативный массив с выборкой или NULL
  */
-function getSingle($sql)
+function getSingle(
+    string  $sql = ''
+):mixed
 {
     $result = getAssocResult($sql);
     if (empty($result)) {
@@ -80,6 +87,10 @@ function getSingle($sql)
  * @param   string    $string       SQL-строка запроса, которую необходимо защитить
  * @return  string                  Возвращает безопасную строку SQL-выражения
  */
-function realEscape($dbLink, $string) {
+function realEscape
+($dbLink,
+ $string
+):string
+{
     return mysqli_real_escape_string($dbLink, (string)htmlspecialchars(strip_tags($string)));
 }

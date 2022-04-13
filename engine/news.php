@@ -5,10 +5,9 @@
 
 /** Получение новостей из БД
  *
- * @param   string  $sql    Выражение SQL-запроса для получения новостей
  * @return  array           Массив с новостями
  */
-function getNews()
+function getNews():array
 {
     $sql = "SELECT * FROM gallery_news ORDER BY `gallery_news`.`date` DESC";
     return getAssocResult($sql);
@@ -17,9 +16,11 @@ function getNews()
 /** Отображение новостей на страницу
  *
  * @param   array   $news   Массив новостей
- * @return  text            HTML-код новостей
+ * @return  string          HTML-код новостей
  */
-function renderNews($news)
+function renderNews(
+    array   $news = []
+):string
 {
     $newsContent = '';
     foreach($news as $newsItem) {

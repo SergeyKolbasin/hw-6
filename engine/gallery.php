@@ -43,10 +43,11 @@ function renderGallery(
 /** Функция получает выборку из БД об отображаемых фото
  *
  * @param   string  $sql    Выражение SQL-запроса
- * @param   string  $sql    Выражение SQL-запроса
  * @return  array           Массив с информацией об отображаемых фотографиях
  */
-function getImages($sql)
+function getImages(
+    string  $sql = ''
+):array
 {
     $result = getAssocResult($sql);     // Получаем инфу из БД
     return $result;                     // и возвращаем ее ассоциативным массивом
@@ -57,7 +58,9 @@ function getImages($sql)
  * @param   integer    $id    Идентификатор фотографии
  * @return  array             Массив с информацией об отображаемой фотографии
  */
-function getImage($id)
+function getImage(
+    int $id = 0
+):array
 {
     $id = (int)$id;                                     // Превращаем id в число
     $sql = "SELECT * FROM `gallery` WHERE `id` = $id";  // Формируем SQL-запрос
@@ -67,9 +70,11 @@ function getImage($id)
 /** Функция возвращает HTML-код отображения страницы фото из БД по его id
  *
  * @param   integer     $id     Идентификатор отображаемой фотографии
- * @return  array               HTML-код отображения страницы с фото
+ * @return  string               HTML-код отображения страницы с фото
  */
-function showImage($id)
+function showImage(
+    int $id = 0
+):string
 {
     $id = (int)$id;                                             // Преобразуем id в число
     $image = getImage($id);                                     // Получаем информацию о фото
@@ -94,9 +99,9 @@ function showImage($id)
  * @return  boolean             Результат обновления записи таблицы
  */
 function updateViews(
-    $id,                // id фотографии
-    $views              // Количество записываемых просмотров
-)
+    int $id = 0,                // id фотографии
+    int $views = 1              // Количество записываемых просмотров
+):bool
 {
     $id = (int)$id;                                                       // Преобразуем $id в число
     $viewsStr = strval($views);                                           // Число преобразем в строку
@@ -111,7 +116,12 @@ function updateViews(
  * @param   float       $price          цена товара
  * @return  integer                     количество записей, затронутых запросом
  */
-function updateProduct($id, $name, $description, $price): int
+function updateProduct(
+    int     $id = 0,
+    string  $name = '',
+    string  $description = '',
+    float   $price = 0
+): int
 {
     $db = createConnection();
     $id = (int)$id;
@@ -132,7 +142,13 @@ function updateProduct($id, $name, $description, $price): int
  * @param   integer     $size           размер файла в байтах
  * @return  integer                     количество записей, затронутых запросом
  */
-function insertProduct($name, $description, $price, $url, $size): int
+function insertProduct(
+    string  $name = '',
+    string  $description = '',
+    float   $price = 0,
+    string  $url = '',
+    int     $size
+):int
 {
     $db = createConnection();
     // Защита
@@ -153,7 +169,7 @@ function insertProduct($name, $description, $price, $url, $size): int
  * @return  string          Числовое имя нового товара, соответствует ID в БД
  *                          или '0', если произошла ошибка
  */
-function getProductName(): string
+function getProductName():string
 {
     $sql = "SELECT `auto_increment` FROM information_schema.tables WHERE table_schema='" . DB_NAME . "' AND table_name='" . TABLE_PRODUCT . "'";
     $newID = getSingle($sql);
@@ -168,35 +184,12 @@ function getProductName(): string
  * @param   integer   $id       Идентификатор отзыва
  * @return  boolean             Результат удаления
  */
-function deleteProduct($id) {
+function deleteProduct(
+    int $id = 0
+):bool
+{
     $db = createConnection();
     $id = (int)$id;
     $sql = "DELETE FROM `gallery` WHERE `id`=$id";
     return execQuery($sql, $db);
 }
-
-
-
-/** Функция возвращает HTML-код отображения страницы фото из БД по его id
- *
- * @param   integer     $id     Идентификатор отображаемой фотографии
- * @return  array               HTML-код отображения страницы с фото
- */
-/*
-function editImage($id)
-{
-    $id = (int)$id;                                             // Преобразуем id в число
-    $image = getImage($id);                                     // Получаем информацию о фото
-    if (empty($image)) {                                        // Если информация о фото отсутствует в базе
-        echo "Ошибка 404, фотографии с id=$id нет в базе!";             // Выводим сообщение об ошибке
-        die;
-    }
-    if (!file_exists($image['url'])) {                                     // Если запрашиваемый файл отсутствует
-        echo 'Ошибка 404, файл "' . $image['url'] . '" отсутствует!';      // Выводим сообщение об ошибке
-        die;
-    }
-    //$image['views']++;                                      // Увеличиваем количество просмотров на 1
-    //updateViews($id, $image['views']);                      // Запишем их в БД
-    return render(TEMPLATES_DIR . 'product.tpl', $image);     // Возвращаем HTML-код отображения страницы с фото
-}
-*/
