@@ -9,10 +9,7 @@
      * @param number $b Второе слагаемое
      * @return number   Результат сложения
      */
-    function fMathAdd(
-        int $a = 0,
-        int $b = 0
-    ):float
+    function fMathAdd($a = 0, $b = 0)
     {
         return $a + $b;
     }
@@ -22,10 +19,7 @@
      * @param number $b Вычитаемое
      * @return number   Разность
      */
-    function fMathSub (
-        int $a = 0,
-        int $b = 0
-    ):float
+    function fMathSub ($a = 0, $b = 0)
     {
         return $a - $b;
     }
@@ -35,10 +29,7 @@
      * @param number $b Множитель
      * @return number   Произведение
      */
-    function fMathMul (
-        int $a = 0,
-        int $b = 0
-    ):float
+    function fMathMul ($a = 0, $b = 0)
     {
         return $a * $b;
     }
@@ -46,13 +37,9 @@
      *
      * @param number $a Делимое
      * @param number $b Делитель
-     * @return mixed   Частное
+     * @return number   Частное
      */
-    function fMathDiv
-    (
-        int $a = 0,
-        int $b = 1
-    ):float
+    function fMathDiv($a = 0, $b = 1)
     {
         if ($b == 0) {
             return 'На 0 делить нельзя!';
@@ -68,10 +55,10 @@
      * @return mixed                Результат математической операции
     */
     function fMathOperation(
-        int $argA = 0,                  // аргумент A
-        int $argB = 0,                  // аргумент B
+        $argA = 0,                  // аргумент A
+        $argB = 0,                  // аргумент B
         $mathOperation = ''             // математическая операция: "+", "-", "*" или "/"
-    ):mixed
+    )
     {
         switch ($mathOperation) {
             case '+':                                   // Сложение
