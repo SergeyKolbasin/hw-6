@@ -35,7 +35,7 @@
 
 <!-- Форма калькулятора -->
 <form method="post">
-    <input type="number" step="any" name="a" value="<?php if (isset($a)) echo $a; ?>" required>
+    <input type="number" step="0.1" name="a" value="<?php if (isset($a)) echo $a; ?>" required>
     <?php
         // Вывод знака математической операции
         if (isset ($mathOperation)) {
@@ -44,7 +44,7 @@
             echo '&nbsp; &nbsp; &nbsp; &nbsp;';
         }
     ?>
-    <input type="number" step="any" name="b" value="<?php if (isset($b)) echo $b; ?>" required>
+    <input type="number" step="0.1" name="b" value="<?php if (isset($b)) echo $b; ?>" required>
     <strong>=</strong>
     <?php
         require_once '../config/config.php';
