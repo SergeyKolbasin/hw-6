@@ -37,7 +37,7 @@
      *
      * @param number $a Делимое
      * @param number $b Делитель
-     * @return number   Частное
+     * @return mixed   Частное
      */
     function fMathDiv($a = 0, $b = 1)
     {
